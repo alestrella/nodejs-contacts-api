@@ -54,9 +54,21 @@
     "phone": "(704) 398-7993"
   },
   {
-    "id": "10",
-    "name": "Alec Howard",
-    "email": "Donec.elementum@scelerisquescelerisquedui.net",
-    "phone": "(748) 206-2688"
+    "id": "3100b0d9-ee14-4400-9f55-80a4f884bd5a",
+    "name": "Morty",
+    "email": "morty@gmail.com",
+    "phone": "667-88-99"
+  },
+  {
+    "id": "749475b9-5ec9-416b-be85-d7b7edc26874",
+    "name": "Rick",
+    "email": "rick@gmail.com",
+    "phone": "555-88-99"
+  },
+  {
+    "id": "7cd9384f-9c12-4f71-bd97-53e5b033fef7",
+    "name": "Adelina",
+    "email": "adelina@gmail.com",
+    "phone": "222-88-99"
   }
 ]
