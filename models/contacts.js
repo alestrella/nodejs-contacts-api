@@ -1,6 +1,5 @@
 const fs = require("fs/promises");
 const path = require("path");
-const { v4: uuidv4 } = require("uuid");
 
 const contactsPath = path.join(__dirname, "./contacts.json");
 
@@ -21,7 +20,6 @@ const getContactById = async (contactId) => {
 const addContact = async ({ name, email, phone }) => {
   const contacts = await listContacts();
   const newContact = {
-    id: uuidv4(),
     name,
     email,
     phone,
