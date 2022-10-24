@@ -38,6 +38,7 @@ userSchema.post("save", handleSaveError);
 const signupSchema = Joi.object({
   email: Joi.string().pattern(emailRegex).required(),
   password: Joi.string().min(8).required(),
+  subscription: Joi.string().valid(...subsPlans),
 });
 
 const loginSchema = Joi.object({
@@ -46,7 +47,9 @@ const loginSchema = Joi.object({
 });
 
 const subsSchema = Joi.object({
-  subscription: Joi.string().valid(...subsPlans),
+  subscription: Joi.string()
+    .valid(...subsPlans)
+    .required(),
 });
 
 const schemas = {

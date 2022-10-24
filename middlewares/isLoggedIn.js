@@ -22,7 +22,7 @@ const userAuth = async (req, res, next) => {
     req.user = user;
     next();
   } catch (error) {
-    if (!error) {
+    if (!error.status) {
       error.status = 401;
       error.message = "Not authorized";
     }

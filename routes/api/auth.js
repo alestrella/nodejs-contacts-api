@@ -25,7 +25,7 @@ router.get("/current", isLoggedIn, ctrlWrapper(ctrl.getCurrent));
 router.get("/logout", isLoggedIn, ctrlWrapper(ctrl.logout));
 
 router.patch(
-  "/",
+  "/subscription",
   isLoggedIn,
   validateBody(schemas.subsSchema),
   ctrlWrapper(ctrl.updateSubscription)
