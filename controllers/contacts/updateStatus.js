@@ -10,7 +10,7 @@ const updateFavorite = async (req, res) => {
   if (!result) {
     throw RequestError(404);
   }
-  res.json(result);
+  res.json(result, { status: "Update successful" });
 };
 
 module.exports = updateFavorite;
