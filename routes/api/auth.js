@@ -1,9 +1,10 @@
 const express = require("express");
 
 const { ctrlWrapper } = require("../../helpers");
-const ctrl = require("../../controllers/users");
+const ctrlAuth = require("../../controllers/auth");
+const ctrlUser = require("../../controllers/users");
 
-const { validateBody, isLoggedIn } = require("../../middlewares");
+const { validateBody, isLoggedIn, upload } = require("../../middlewares");
 const { schemas } = require("../../models/users");
 
 const router = express.Router();
@@ -11,24 +12,31 @@ const router = express.Router();
 router.post(
   "/signup",
   validateBody(schemas.signupSchema),
-  ctrlWrapper(ctrl.signup)
+  ctrlWrapper(ctrlAuth.signup)
 );
 
 router.post(
   "/login",
   validateBody(schemas.loginSchema),
-  ctrlWrapper(ctrl.login)
+  ctrlWrapper(ctrlAuth.login)
 );
 
-router.get("/current", isLoggedIn, ctrlWrapper(ctrl.getCurrent));
+router.get("/current", isLoggedIn, ctrlWrapper(ctrlAuth.getCurrent));
 
-router.get("/logout", isLoggedIn, ctrlWrapper(ctrl.logout));
+router.get("/logout", isLoggedIn, ctrlWrapper(ctrlAuth.logout));
 
 router.patch(
   "/subscription",
   isLoggedIn,
   validateBody(schemas.subsSchema),
-  ctrlWrapper(ctrl.updateSubscription)
+  ctrlWrapper(ctrlUser.updateSubscription)
+);
+
+router.patch(
+  "/avatars",
+  isLoggedIn,
+  upload.single("avatar"),
+  ctrlWrapper(ctrlUser.updateAvatar)
 );
 
 module.exports = router;

@@ -6,7 +6,7 @@ const { RequestError } = require("../helpers");
 
 const { User } = require("../models/users");
 
-const userAuth = async (req, res, next) => {
+const isLoggedIn = async (req, res, next) => {
   try {
     const { authorization } = req.headers;
     const [bearer, token] = authorization.split(" ");
@@ -30,4 +30,4 @@ const userAuth = async (req, res, next) => {
   }
 };
 
-module.exports = userAuth;
+module.exports = isLoggedIn;
