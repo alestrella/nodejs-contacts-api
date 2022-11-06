@@ -28,14 +28,7 @@ const signup = async (req, res) => {
 
   const verificationLink = `${BASE_URL}/api/users/verify/${verificationToken}`;
 
-  const mail = {
-    to: email,
-    subject: "Confirm Your Email",
-    text: `To confirm your email address, please click on the following link: <a target="_blank" href="${verificationLink}">${verificationLink}</a>`,
-    html: `<p>To confirm your email address, please click on the following link: <a target="_blank" href="${verificationLink}">${verificationLink}</a></p>`,
-  };
-
-  await sendEmail(mail);
+  await sendEmail(email, verificationLink);
 
   res.status(201).json({
     user: {
