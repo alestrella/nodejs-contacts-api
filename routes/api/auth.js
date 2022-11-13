@@ -15,6 +15,14 @@ router.post(
   ctrlWrapper(ctrlAuth.signup)
 );
 
+router.get("/verify/:verificationToken", ctrlWrapper(ctrlAuth.verify));
+
+router.post(
+  "/verify",
+  validateBody(schemas.verifyEmailSchema),
+  ctrlWrapper(ctrlAuth.resendVerifyEmail)
+);
+
 router.post(
   "/login",
   validateBody(schemas.loginSchema),
